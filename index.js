@@ -34,6 +34,10 @@ mongoose
     app.use("/api/chat",chatRoutes)
     app.use("/api/message",messageRoutes)
     app.use("/api/notification", notifactionRoutes)
+
+    app.get("/", (req, res) => {
+        res.send({success:"Connection is successful"})
+    })
     
 
 const server = app.listen(port, () => {
