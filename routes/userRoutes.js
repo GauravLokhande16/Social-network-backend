@@ -58,7 +58,8 @@ routes.post("/login", async (req, res) => {
 
 
 // search users
-routes.get("/", async (req, res) => {
+routes.get("/users", async (req, res) => {
+  console.log(req.query.id)
   const keyword = req.query.search
     ? {
         $or: [
