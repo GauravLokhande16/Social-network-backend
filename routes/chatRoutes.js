@@ -58,7 +58,7 @@ route.post("/", async (req, res) => {
 // fetch chats
 route.get("/", async(req, res) => {
     try {
-        Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
+        Chat.find({ users: { $elemMatch: { $eq: req.params.id } } })
             .populate("users", "-password")
             .populate("groupAdmin", "-password")
             .populate("latestMessage")

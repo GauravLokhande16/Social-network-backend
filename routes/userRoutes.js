@@ -14,6 +14,9 @@ const generateToken = (id) => {
 
 routes.post("/register", async (req, res) => {
   const { name, password, email, profilePic } = req.body;
+  if(!name || !password || !email || !profilePic){
+    res.json({error:"Please fill all fields"})
+  }
   const user = await User.findOne({ email });
 
   if (user) return res.json("User already exist");
@@ -35,6 +38,9 @@ routes.post("/register", async (req, res) => {
 
 routes.post("/login", async (req, res) => {
   const { email, password } = req.body;
+  if( !password || !email ){
+    res.json({error:"Please fill all fields"})
+  }
   try {
     const user = await User.findOne({ email });
     
